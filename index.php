@@ -10,8 +10,7 @@ session_start();
     <link rel="stylesheet" href="/css/master.css">
   </head>
   <body>
-    <?php include(header.php)?>
-    <?php include(footer.php)?>
+    <?php include("header.php");?>
     <div class="login">
       <h2>Espace de Connexion</h2>
 
@@ -37,5 +36,6 @@ session_start();
               <?php } ?>
     </div>
   </div>
+    <?php include("footer.php");?>
   </body>
 </html>
