@@ -1,0 +1,37 @@
+body{
+  background-color: white;
+}
+.logo{
+  float: left;
+  width: 25px;
+  height: 15px;
+  margin-top: -40px;
+}
+.header{
+  text-align: right;
+  height: 100px;
+}
+.footer{
+  margin: auto;
+  text-align: center;
+}
+.contenu{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  display: flex;
+}
+.main{
+  margin-left: 7%;
+  width: 65%;
+  border-color: grey;
+  border-style: groove;
+  height: 500px;
+}
+.sidebar{
+  margin-left: 8%;
+  width: 25%;
+  border-color: black;
+  border-style: dotted;
+  height: 500px;
+}
