@@ -1,0 +1,80 @@
+body{
+  background-color: #2F4F4F;
+}
+.logo{
+  float: left;
+  text-decoration: none;
+  color: black;
+}
+.header{
+  text-align: right;
+  height: 100px;
+  margin: right;
+}
+.footer{
+  margin: auto;
+  text-align: center;
+
+}
+.contenu{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  display: flex;
+}
+.main{
+  margin-left: 10%;
+  width: 65%;
+  border-color: grey;
+  border-style: groove;
+  height: 500px;
+}
+.sidebar{
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 20%;
+  border-color: black;
+  border-style: dotted;
+  height: 500px;
+}
+
+.formulaire_signup{
+  margin: auto;
+  padding-bottom: 50px;
+  text-align: center;
+}
+.header_signup{
+  margin: auto;
+  height: 100px;
+  background-color: grey;
+  position: fixed;
+}
+.title{
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 22px;
+  font-family: monospace;
+}
+h2{
+  text-align: center;
+}
+.admin_contenair{
+
+  margin-left: 30%;
+  margin-bottom: 10px;
+}
+.gallery_montage{
+  padding-top: -25px;
+  border-style: groove;
+  border-color: black;
+  border-width: thin;
+  width: auto;
+  height: 500px;
+  margin: auto;
+}
+
+.img_superposable{
+  width: auto;
+  height: 150px;
+  display: flex;
+}
