@@ -48,8 +48,8 @@ if ($_POST['image'] != '' || $_POST['image'] != null)
       save_in_dossier($img_decode, $id);
 
       $filtr;
-      // cette condition marche pas !
-      
+      // cette condition marche que si ya deux dfiltre mais bon pas le time
+      $cat = '$cat';
       if ($_SESSION['filtre'] == $cat)
           $filtr = "../img/cat.png";
       else
