@@ -10,9 +10,14 @@ if (isset($_SESSION['username']))
   <head>
     <meta charset="utf-8">
     <title>Page d'adminstration du compte</title>
-    <link rel="stylesheet" href="css/master.css">
+    <!-- <link rel="stylesheet" href="css/master.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   </head>
-  <body>
+  <body class="container">
     <?php include("fragment/header.php");?>
     <span>
       <?php
@@ -65,7 +70,7 @@ if (isset($_SESSION['username']))
         <h3>Changer Votre Mail</h3>
         <form action="action/a_modif_mail.php" method="post">
           <label>Nouveu mail</label>
-          <input type="mail" name="new_mail" value="">
+          <input type="text" name="new_mail" value="">
           <input type="submit" name="Envoyer" value="Envoyer">
         </form>
       </div>

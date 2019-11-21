@@ -8,10 +8,15 @@
   <head>
     <meta charset="utf-8">
     <title>prenez une photo</title>
-    <link rel="stylesheet" href="css/master.css">
+    <!-- <link rel="stylesheet" href="css/master.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   </head>
 
-  <body>
+  <body class="container">
 
     <?php include('fragment/header.php');?>
 
@@ -31,8 +36,9 @@
     <fieldset style="width: 640px; display: inline-block;">
       <legend>Photo</legend>
       <img id="test" src="about:blank" alt="Photo" title="Photo" />
-      <form class="" action="index.html" method="post">
-          <button type="button" name="button">Enregistrer la photo</button>
+      <form class="" action="action/a_save_file.php" method="post">
+      <input type="text" name="image" style="display:none">
+      <button type="submit" name="submit">Enregistrer la photo</button>
       </form>
 
     </fieldset>
@@ -56,11 +62,17 @@
         var ctx = canvas.getContext("2d").drawImage(video, 0, 0, 640, 480);
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
+        document.querySelector('input[name=image]').value = data;
+
       }
+
+
     </script>
     <div class="gallery_montage">
+      <?php
 
-      <p>p</p>
+
+      ?>
     </div>
     <?php include('fragment/footer.php');?>
 

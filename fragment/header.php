@@ -9,9 +9,9 @@
 
 
   <?php if (isset($_SESSION['id'])) { ?>
-  <div class="bouton_header">
+  <div class="container">
     Bonjour, <?php print_r(htmlspecialchars($_SESSION['username']))?>
-    <a href="action/a_logout.php"><h4>Deconnexion</h4></a>
+    <a href="action/a_logout.php"><h8>Deconnexion</h8></a>
   </div>
 
 <?php } else { ?>
