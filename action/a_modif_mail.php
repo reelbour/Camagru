@@ -59,7 +59,7 @@ if(!filter_var($new_mail, FILTER_VALIDATE_EMAIL)) {
 
 if (tchek_if_mail_exist($new_mail) == 1)
 {
-  $_SESSION['error'] = "le mail choisi est deja affilier a un compte";
+  $_SESSION['error'] = "le mail choisi est deja affilier a un compte, tu veux me baiser ? un compte par mail frere";
   header("Location: ../admin.php");
   return;
 }

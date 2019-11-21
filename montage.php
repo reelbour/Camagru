@@ -2,6 +2,13 @@
   session_start();
   if (isset($_SESSION['username']))
   {
+
+    $_SESSION['filtre'] = null;
+
+    if (isset($_GET['selected']))
+    {
+      $_SESSION['filtre'] = $_GET['selected'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -19,11 +26,20 @@
   <body class="container">
 
     <?php include('fragment/header.php');?>
+    <span>
+      <?php
+      if (isset($_SESSION['error']))
+        echo $_SESSION['error'];
+      $_SESSION['error'] = null;
+      if (isset($_SESSION['succes']))
+      echo $_SESSION['succes'];
+      $_SESSION['succes'] = null;
+      ?>
+    </span>
 
     <div class="img_superposable">
-
-      <img src="img/cat.png" width="150px" height="150px" alt="">
-      <img src="img/jsaipa.png" width="150px" height="150px" alt="">
+    <a href="?selected=$cat"> <img src="img/cat.png" width="150px" height="150px" alt=""></a>
+    <a href="?selected=$jsaipa"><img src="img/jsaipa.png" width="150px" height="150px" alt=""></a>
     </div>
 
 
