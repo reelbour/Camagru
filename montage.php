@@ -16,10 +16,10 @@
     <meta charset="utf-8">
     <title>prenez une photo</title>
     <!-- <link rel="stylesheet" href="css/master.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --> -->
 
   </head>
 
@@ -42,7 +42,7 @@
         <label for="fileUpload">Fichier:</label>
         <input type="file" name="photo" id="fileUpload">
         <input type="submit" name="submit" value="Upload">
-        <p><strong>Note:</strong> Seuls le format .png est autorisé jusqu'à une taille maximale de 5 Mo.</p>
+        <!-- <p><strong>Note:</strong> Seuls le format .png est autorisé jusqu'à une taille maximale de 5 Mo.</p> -->
         <span>
           <?php
           if (isset($_SESSION['error']))

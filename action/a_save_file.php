@@ -4,6 +4,19 @@ session_start();
 // debut des Fonction
 
 
+function mettre_dans_bdd($pathfichier)
+{
+  try {
+
+  } catch (\Exception $e) {
+
+  }
+
+
+
+}
+
+
 function mettre_un_filtre($source, $sourcefiltre, $pathfichier)
 {
   // Charge le cachet et la photo afin d'y appliquer le tatouage numérique
@@ -28,15 +41,15 @@ function mettre_un_filtre($source, $sourcefiltre, $pathfichier)
 
 function save_in_dossier($img_a_sauver, $idfichier)
 {
-  if (file_exists('../gallery/'))
+  if (file_exists('../tmp/'))
   {
-    if(file_exists("../gallery/$idfichier"))
+    if(file_exists("../tmp/". $idfichier . ".png"))
     {
       $_SESSION['error'] = 'le fichier existe deja';
       echo "le fichier existe deja";
       return;
     }
-    file_put_contents('../gallery/image'.$idfichier.'.png', $img_a_sauver);
+    file_put_contents('../tmp/'.$idfichier.'.png', $img_a_sauver);
 
   }
 }
@@ -55,8 +68,9 @@ if ($_POST['image'] != '' || $_POST['image'] != null)
     {
       $img64 = $_POST['image'];
       $img_decode = base64_decode(substr($img64, 22));
-      $id = '5';
-      save_in_dossier($img_decode, $id);
+      //$id = '5';
+      $nomdelimagequivaetreenregistre = time();
+      save_in_dossier($img_decode, $nomdelimagequivaetreenregistre);
 
       $filtr;
       // cette condition marche que si ya deux dfiltre mais bon pas le time
@@ -66,7 +80,16 @@ if ($_POST['image'] != '' || $_POST['image'] != null)
       else
           $filtr = "../img/jsaipa.png";
 
-      $ret = mettre_un_filtre("../gallery/image".$id.".png", $filtr, "../gallery/image".$id.".png");
+
+
+
+            mettre_un_filtre("../tmp/".$nomdelimagequivaetreenregistre.".png", $filtr, "../gallery/".$nomdelimagequivaetreenregistre.".png");
+            //mtn on va mettre l image dans la base de donne (le chemin)
+
+            mettre_dans_bdd($nomdelimagequivaetreenregistre);
+
+
+
     // save_in_dossier($ret, $id);
       $_SESSION['succes'] = 'la photo a bien été enregistrer';
       header("Location: ../montage.php");
