@@ -1,25 +1,29 @@
 <?php
 session_start();
+
+// debut des Fonction
+
+
 function mettre_un_filtre($source, $sourcefiltre, $pathfichier)
 {
   // Charge le cachet et la photo afin d'y appliquer le tatouage numérique
-$stamp = imagecreatefrompng($sourcefiltre);
-$im = imagecreatefrompng($source);
+    $stamp = imagecreatefrompng($sourcefiltre);
+    $im = imagecreatefrompng($source);
 
 // Définit les marges pour le cachet et récupère la hauteur et la largeur de celui-ci
-$marge_right = 10;
-$marge_bottom = 10;
-$sx = imagesx($stamp);
-$sy = imagesy($stamp);
+  $marge_right = 10;
+  $marge_bottom = 10;
+  $sx = imagesx($stamp);
+  $sy = imagesy($stamp);
 
 // Copie le cachet sur la photo en utilisant les marges et la largeur de la
 // photo originale  afin de calculer la position du cachet
-imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+  imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
 
 // Affichage et libération de la mémoire
-header('Content-type: image/png');
-imagepng($im, $pathfichier);
-imagedestroy($im);
+  header('Content-type: image/png');
+  imagepng($im, $pathfichier);
+  imagedestroy($im);
 }
 
 function save_in_dossier($img_a_sauver, $idfichier)
@@ -36,6 +40,13 @@ function save_in_dossier($img_a_sauver, $idfichier)
 
   }
 }
+//
+//
+//
+//fin des Fonction
+
+
+
 
 if ($_POST['image'] != '' || $_POST['image'] != null)
 {

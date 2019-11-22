@@ -25,17 +25,8 @@
 
   <body class="container">
 
+
     <?php include('fragment/header.php');?>
-    <span>
-      <?php
-      if (isset($_SESSION['error']))
-        echo $_SESSION['error'];
-      $_SESSION['error'] = null;
-      if (isset($_SESSION['succes']))
-      echo $_SESSION['succes'];
-      $_SESSION['succes'] = null;
-      ?>
-    </span>
 
     <div class="img_superposable">
     <a href="?selected=$cat"> <img src="img/cat.png" width="150px" height="150px" alt=""></a>
@@ -47,7 +38,25 @@
       <legend>Webcam</legend>
       <video autoplay></video><br />
       <button onclick="takephoto();">Prendre une photo</button>
+      <form action="action/a_upload.php" method="post" enctype="multipart/form-data">
+        <label for="fileUpload">Fichier:</label>
+        <input type="file" name="photo" id="fileUpload">
+        <input type="submit" name="submit" value="Upload">
+        <p><strong>Note:</strong> Seuls le format .png est autorisé jusqu'à une taille maximale de 5 Mo.</p>
+        <span>
+          <?php
+          if (isset($_SESSION['error']))
+            echo $_SESSION['error'];
+          $_SESSION['error'] = null;
+          if (isset($_SESSION['succes']))
+          echo $_SESSION['succes'];
+          $_SESSION['succes'] = null;
+          ?>
+        </span>
+
+      </form>
     </fieldset>
+
 
     <fieldset style="width: 640px; display: inline-block;">
       <legend>Photo</legend>
@@ -84,6 +93,9 @@
 
 
     </script>
+
+
+
     <div class="gallery_montage">
       <?php
 
