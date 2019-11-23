@@ -46,4 +46,6 @@ try {
             echo "ERREUR DE CREATION DE TABLE: ".$e->getMessage()."\nAborting process\n";
         }
 
+
+
 ?>

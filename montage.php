@@ -99,6 +99,35 @@
     <div class="gallery_montage">
       <?php
 
+// on va faire une requete avant pour le Count
+
+
+try {
+      include_once 'config/database.php';
+
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $queryx= $dbh->prepare("SELECT COUNT(*) FROM gallery WHERE userid=:userid");
+      $idusercount = $_SESSION["id"];
+      $queryx->execute(array('userid' => $idusercount));
+      $resultx = $queryx->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $nombreentre = $resultx[0]['COUNT(*)'];
+
+
+    //  echo "<br />";
+    //  print_r($resultx);
+
+
+    //  closeCursor($queryx);
+
+
+} catch (PDOException $e) {
+  return($e->getMessage());
+}
+
 
       try {
         include_once 'config/database.php';
@@ -116,8 +145,9 @@
 
 // jai besoin de recup avec un select count le nomnre de colone sinon ca bug sa mere
         //  print_r($result);
-          $i = 0;
-            while($i <= 5)
+          $i = $nombreentre - 1;
+
+            while($i >= 0)
               {
 
               $var = $result[$i]['img'];
@@ -128,13 +158,16 @@
                 <?php
 
 
+
+
                 echo "<img src='gallery/$var' width='200px' height='200px;' >";
+                  echo "<a href='action/a_del_image.php?imgPath=$var'><strong>X</strong></a>";
 
 //<img src="gallery/" 1574441745.png="" <="" div="">
                 ?>
               </div>
                 <?php
-            $i++;
+            $i--;
             }
           }
 
