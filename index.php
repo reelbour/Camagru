@@ -18,10 +18,10 @@ session_start();
     <?php include("fragment/header.php");?>
     <div class="contenu">
       <div class="main">
-        <p>yo</p>
-      </div>
-      <div class="sidebar">
+        <?php
 
+
+        ?>
       </div>
     </div>
     <?php include("fragment/footer.php");?>

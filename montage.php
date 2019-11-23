@@ -16,10 +16,10 @@
     <meta charset="utf-8">
     <title>prenez une photo</title>
     <!-- <link rel="stylesheet" href="css/master.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
   </head>
 
@@ -100,6 +100,47 @@
       <?php
 
 
+      try {
+        include_once 'config/database.php';
+            $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query= $dbh->prepare("SELECT * FROM gallery WHERE userid=:userid");
+
+            $s = $_SESSION["id"];
+
+            $query->execute(array('userid' => $s));
+
+            //$_SESSION['id']));
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);//ca recup sous forme de tableau associatif lesvaleur des mon bdd
+
+// jai besoin de recup avec un select count le nomnre de colone sinon ca bug sa mere
+        //  print_r($result);
+          $i = 0;
+            while($i <= 5)
+              {
+
+              $var = $result[$i]['img'];
+
+              //echo $var;
+              ?>
+              <div class="gal">
+                <?php
+
+
+                echo "<img src='gallery/$var' width='200px' height='200px;' >";
+
+//<img src="gallery/" 1574441745.png="" <="" div="">
+                ?>
+              </div>
+                <?php
+            $i++;
+            }
+          }
+
+       catch (PDOException $e) {
+        return($e->getMessage());
+      }
       ?>
     </div>
     <?php include('fragment/footer.php');?>

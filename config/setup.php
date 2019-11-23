@@ -28,7 +28,22 @@ try {
         $dbb->exec($sql);
         echo "La table des users à été creer avec succès\n";
     } catch (PDOException $e) {
-        echo "ERREUR DE CREATION DE TABLE : ".$e->getMessage()."\nOn aborte le projet\n";
+        echo "ERREUR DE CREATION DE TABLE : ".$e->getMessage()."\naborting process\n";
     }
+try {
+
+            $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "CREATE TABLE `gallery` (
+              `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+              `userid` INT(11) NOT NULL,
+              `img` VARCHAR(100) NOT NULL,
+              FOREIGN KEY (userid) REFERENCES users(id)
+            )";
+            $dbh->exec($sql);
+            echo "table gallery a bien ete cree\n";
+        } catch (PDOException $e) {
+            echo "ERREUR DE CREATION DE TABLE: ".$e->getMessage()."\nAborting process\n";
+        }
 
 ?>

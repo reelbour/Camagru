@@ -3,17 +3,21 @@ session_start();
 
 // debut des Fonction
 
-
-function mettre_dans_bdd($pathfichier)
+// adpater la fonction pour l action save file take picture ta capter
+function mettre_dans_bdd($pathfichier, $userid)
 {
-  try {
+    include_once '../config/database.php';
 
-  } catch (\Exception $e) {
-
-  }
-
-
-
+    try {
+        $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query= $dbh->prepare("INSERT INTO gallery (userid, img) VALUES (:userid, :img)");
+        $query->execute(array(':userid' => $userid, ':img' => $pathfichier));
+        $_SESSION['succes'] = 'normalment on a enregistrer dans la bdd';
+        }
+      catch (PDOException $e) {
+        return ($e->getMessage());
+      }
 }
 
 
@@ -86,7 +90,7 @@ if ($_POST['image'] != '' || $_POST['image'] != null)
             mettre_un_filtre("../tmp/".$nomdelimagequivaetreenregistre.".png", $filtr, "../gallery/".$nomdelimagequivaetreenregistre.".png");
             //mtn on va mettre l image dans la base de donne (le chemin)
 
-            mettre_dans_bdd($nomdelimagequivaetreenregistre);
+            mettre_dans_bdd($nomdelimagequivaetreenregistre.".png", $_SESSION["id"]);
 
 
 

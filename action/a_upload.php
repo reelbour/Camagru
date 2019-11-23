@@ -1,6 +1,22 @@
 <?php
 session_start();
 
+function mettre_dans_bdd($pathfichier, $userid)
+{
+    include_once '../config/database.php';
+
+    try {
+        $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query= $dbh->prepare("INSERT INTO gallery (userid, img) VALUES (:userid, :img)");
+        $query->execute(array(':userid' => $userid, ':img' => $pathfichier));
+        $_SESSION['succes'] = 'normalment on a enregistrer dans la bdd';
+        }
+      catch (PDOException $e) {
+        return ($e->getMessage());
+      }
+}
+
 function mettre_un_filtre($source, $sourcefiltre, $pathfichier)
 {
   // Charge le cachet et la photo afin d'y appliquer le tatouage numérique
@@ -86,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
               // mtn que ca c fait on va inserer la nouvelle image dans la base de donnee
 
-              
+              mettre_dans_bdd($nomdelimagequivaetreenregistre.".png", $_SESSION["id"]);
 
 
             //  echo "machalah tout s est bien passé";
