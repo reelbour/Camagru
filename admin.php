@@ -76,6 +76,23 @@ if (isset($_SESSION['username']))
       </div>
 
     </div>
+
+
+    <div>
+      <h3>Voulez vous recevoir les mails de validations ?</h3>
+
+
+
+      <form action="action/a_notif_state.php" method="post">
+      <input type="hidden" name="choix" id="Oui" value="Oui">
+      <button type="submit" value="non">OUI</button>
+      </form>
+      <form action="action/a_notif_state.php" method="post">
+      <input type="hidden" name="choix" id="Non" value="Non">
+      <button type="submit" value="oui">NON</button>
+      </form>
+
+    </div>
     <?php include("fragment/footer.php");?>
   </body>
 </html>
