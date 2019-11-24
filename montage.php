@@ -15,11 +15,7 @@
   <head>
     <meta charset="utf-8">
     <title>prenez une photo</title>
-    <!-- <link rel="stylesheet" href="css/master.css"> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-<!-- Compiled and minified JavaScript -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <link rel="stylesheet" href="css/master.css">
 
   </head>
 
@@ -96,7 +92,7 @@
 
 
 
-    <div class="gallery_montage">
+    <div>
       <?php
 
 // on va faire une requete avant pour le Count
@@ -158,7 +154,7 @@ try {
             //  print_r($result);
               //echo $var;
               ?>
-              <div class="gal">
+              <div>
                 <?php
 
 
@@ -197,6 +193,7 @@ try {
     </head>
     <body>
       <h3>Vous devez vous connectez pour acceder a cette page, cliquer <a href="index.php">ICI</a> pour revenir a l'acceuil </h3>
+      <h3>Si vous souhaitez vous inscrire cliquer <a href="form/signup.php">ICI</a> pour vous inscire</h3>
     </body>
   </html>
   <?php } ?>

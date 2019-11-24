@@ -31,7 +31,7 @@ function testlastpassword($old_psw, $mail_user)
           $query->execute(array('mail' => $mail_user));
 
           $result = $query->fetch(PDO::FETCH_ASSOC);//ca recup sous forme de tableau associatif lesvaleur des mon bdd
-          if ($psd === $result['password'])
+          if ($psd == $result['password'])
               {
                 return (1);
               }
@@ -48,7 +48,7 @@ function update_motdepasse($new_psw, $mail_user)
     try {
         $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        $new_psw = hash('whirlpool', $new_psw);
         $query= $dbh->prepare("UPDATE users SET password = :passwor WHERE mail = :mai");
         $query->execute(array(':passwor' => $new_psw, ':mai' => $mail_user));
         $query->closeCursor();

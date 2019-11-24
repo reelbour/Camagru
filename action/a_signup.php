@@ -11,6 +11,14 @@ if ($mail == "" || $mail == null || $pseudo == "" || $pseudo == null || $mdp == 
   header("Location: ../form/signup.php");
   return;
 }
+
+if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$#', $mdp) != 1 || strlen($mdp) > 15)
+{
+  $_SESSION['error'] = 'Le mot de passe doit contenir au moins une lettre majuscule, 1 lettre miniscule et un chiffre. doit etre compris entre 6 et 15 lettres';
+  header("Location: ../form/signup.php");
+  return;
+}
+
 if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
   $_SESSION['error'] = "Vous devez entrer une adresse mail valide";
   header("Location: ../form/signup.php");
@@ -21,11 +29,7 @@ if (strlen($pseudo) > 50 || strlen($pseudo) < 3) {
   header("Location: ../form/signup.php");
   return;
 }
-if (strlen($mdp) < 3) {
-  $_SESSION['error'] = "mdp doit etre compris entre 3 & 255 caracteres";
-  header("Location: ../form/signup.php");
-  return;
-}
+
 $url = $_SERVER['HTTP_HOST'] . str_replace("/action/a_signup.php", "", $_SERVER['REQUEST_URI']);
 signup($mail, $pseudo, $mdp, $url);
 header("Location: ../form/signup.php")

@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
               mettre_dans_bdd($nomdelimagequivaetreenregistre.".png", $_SESSION["id"]);
 
-
+              unlink("../tmp/" .$nomdelimagequivaetreenregistre. ".png");
             //  echo "machalah tout s est bien passé";
               $_SESSION['succes'] = "Votre image à ete upload et superpose avec succes";
 

@@ -4,9 +4,8 @@ session_start();
 <!DOCTYPE html>
 <HTML>
   <header>
-    <!-- <link rel="stylesheet" type="text/css" href="../css/master.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/master.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <meta charset="UTF-8">
     <title>Creer votre compte !</title>

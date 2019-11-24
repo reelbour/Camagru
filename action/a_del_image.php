@@ -14,7 +14,7 @@ include_once("../config/database.php");
 //suppression commentaire
 
 
-// a faire mais normaement c simple bon fai en 2 sec a tester 
+// a faire mais normaement c simple bon fai en 2 sec a tester
 
 try {
   $dbb = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);

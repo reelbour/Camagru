@@ -6,15 +6,15 @@ function  mail_comment()
 {
   // on a besoin de savoir qui , non on dit juste frere ta eu un com sur ta photo ouselam
       include('../config/database.php');
-      echo "<br>apres include<br>";
+    //  echo "<br>apres include<br>";
 
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $query= $dbh->prepare("SELECT mail FROM users WHERE id = :id");
       $uid = $_SESSION['id'];
 
-      echo "<br><br>";
-      echo $uid;
+    //  echo "<br><br>";
+  //    echo $uid;
       $query->execute([':id' => $uid]);
 
       $res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +39,5 @@ function  mail_comment()
       </html>
       ';
         mail($adressemailuser, $subject, $message, $headers);
-
 }
-
 ?>

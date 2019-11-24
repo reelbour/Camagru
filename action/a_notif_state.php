@@ -29,8 +29,9 @@ if ($choix == 'Oui')
     echo 'c bon deja';
 
     $_SESSION['succes'] = "votre choix a bien été pris en compte";
-    header("Location: ../index.php");
+    header("Location: ../admin.php");
   } catch (PDOException $e) {
+
 
   }
 
@@ -52,7 +53,7 @@ else {
     $query->execute(array(':userid' => $uid, ':choix' => $choix));
     echo "m";
     $_SESSION['succes'] = "votre choix a bien été pris en compte";
-    header("Location: ../index.php");
+    header("Location: ../admin.php");
   } catch (PDOException $e) {
 
   }

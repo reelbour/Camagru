@@ -91,7 +91,7 @@ if ($_POST['image'] != '' || $_POST['image'] != null)
             //mtn on va mettre l image dans la base de donne (le chemin)
 
             mettre_dans_bdd($nomdelimagequivaetreenregistre.".png", $_SESSION["id"]);
-
+            unlink("../tmp/" .$nomdelimagequivaetreenregistre. ".png");
 
 
     // save_in_dossier($ret, $id);

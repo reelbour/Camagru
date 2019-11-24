@@ -5,7 +5,7 @@ session_start();
 ///function pour ajouter un like
 
 function add_like($img, $uid) {
-  include_once ('../config/database.php');
+  include('../config/database.php');
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,6 +24,53 @@ $uid = $_SESSION['id'];
 
 $img = $_GET['imgPath'];
 
+try {
+include('../config/database.php');
+  $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $query= $dbh->prepare("SELECT * FROM `like` WHERE userid = :u AND galleryid = :i");
+
+  $query->execute([':u' => $uid, ':i' => $img]);
+
+  $ress = $query->fetchAll();
+
+  $query= $dbh->prepare("SELECT COUNT(*) FROM `like` WHERE userid = :u AND galleryid = :i");
+  $query->execute([':u' => $uid, ':i' => $img]);
+
+  $countmax = $query->fetchAll();
+
+  $nombredelike = $countmax[0]['COUNT(*)'];
+
+
+
+} catch (PDOException $e) {
+  echo "jsai pas";
+echo "ERROR: ".$e->getMessage();
+}
+
+print_r($ress);
+
+
+echo "<br>";
+print_r($countmax);
+
+echo "<br>";echo "<br>";echo "<br>";
+echo $nombredelike;
+$c = 0;
+$dejalike = 0;
+
+while($c < $nombredelike)
+{
+  if ($ress[$c]['userid'])
+  {
+    $dejalike = 1;
+  }
+  $c++;
+}
+
+echo $dejalike;
+if ($dejalike == 0)
+{
 if (add_like($img, $uid) == 0){
 
   //var_dump((int)$img);
@@ -35,6 +82,11 @@ else {
   $_SESSION['error'] = 'y a eu une erreur lors du like mg';
   header("Location: ../index.php");
 
+}
+}
+else {
+  $_SESSION['error'] = "vous ne pouvez likez qu une seule fois !";
+  header("Location: ../index.php");
 }
 
 
