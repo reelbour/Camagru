@@ -3,10 +3,15 @@ require 'database.php';
 session_start();
 
 //on va tenter de connecter a mysql
+// CREATE DATABASE
+
 try
 {
  $bdd = new PDO('mysql:host=localhost;dbname=camagru;charset=utf8', $DB_USER, $DB_PASSWORD);
  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ $sql = "CREATE DATABASE IF NOT EXISTS`".$DB_NAME."`";
+ $bdd->exec($sql);
+ echo "La base de donne a bien ete cree\n";
 }
 catch (Exception $e)
 {
@@ -46,6 +51,40 @@ try {
             echo "ERREUR DE CREATION DE TABLE: ".$e->getMessage()."\nAborting process\n";
         }
 
+try {
+                // Connect to DATABASE previously created
+                $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "CREATE TABLE `like` (
+                  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                  `userid` INT(11) NOT NULL,
+                  `galleryid` INT(11) NOT NULL,
+                  FOREIGN KEY (userid) REFERENCES users(id),
+                  FOREIGN KEY (galleryid) REFERENCES gallery(id)
+                )";
+                $dbh->exec($sql);
+                echo "Table like a bien ete cree\n";
+            } catch (PDOException $e) {
+                echo "erreur de creqtion de table: ".$e->getMessage()."\non avorte\n";
+    }
+
+    try {
+            // Connect to DATABASE previously created
+            $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "CREATE TABLE `commentaire` (
+              `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+              `userid` INT(11) NOT NULL,
+              `galleryid` INT(11) NOT NULL,
+              `comment` VARCHAR(255) NOT NULL,
+              FOREIGN KEY (userid) REFERENCES users(id),
+              FOREIGN KEY (galleryid) REFERENCES gallery(id)
+            )";
+            $dbh->exec($sql);
+            echo "Table commentaire a bien ete cree\n";
+        } catch (PDOException $e) {
+            echo "erreur de creation de table commentaiere: ".$e->getMessage()."\non avorte\n";
+        }
 
 
 ?>

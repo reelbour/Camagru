@@ -128,8 +128,10 @@ try {
   return($e->getMessage());
 }
 
+                //include '../setup/database.php'
 
-      try {
+
+try {
         include_once 'config/database.php';
             $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -149,9 +151,11 @@ try {
 
             while($i >= 0)
               {
-
+              //  print_r($result);
               $var = $result[$i]['img'];
 
+              $galleryid = $result[$i]['id'];
+            //  print_r($result);
               //echo $var;
               ?>
               <div class="gal">
@@ -161,12 +165,14 @@ try {
 
 
                 echo "<img src='gallery/$var' width='200px' height='200px;' >";
-                  echo "<a href='action/a_del_image.php?imgPath=$var'><strong>X</strong></a>";
-
+                echo "<br/>";
+                echo "<a href='action/a_del_image.php?imgPath=$var&imgId=$galleryid'><strong>X</strong></a>";
+                echo "              ";
+                echo "<a href='action/a_like.php?imgPath=$galleryid'<strong>LIKE</strong></a>";
 //<img src="gallery/" 1574441745.png="" <="" div="">
-                ?>
-              </div>
-                <?php
+
+                echo  '</div>';
+
             $i--;
             }
           }
