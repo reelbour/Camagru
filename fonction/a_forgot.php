@@ -10,8 +10,9 @@ function send_forget_mail($toAddr, $toUsername, $password) {
       <title>' . $subject . '</title>
     </head>
     <body>
-      Yo' . htmlspecialchars($toUsername) . ' </br>
+      Yo ' . htmlspecialchars($toUsername) . ' </br>
       Voici votre nouveau mot de passe : ' . $password . ' </br>
+      JE TE CONSEILLE VIVEMENT DE LE CHANGE DANS LA PAGE ADMINIStRATEUR DU SITE !
     </body>
   </html>
   ';
