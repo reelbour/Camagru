@@ -21,7 +21,7 @@ session_start();
           <label>pseudo: </label>
           <input id="username" name="username" placeholder="username" type="text">
           <label>mot de passe: </label>
-          <input id="password" name="password" placeholder="password" type="password">
+          <input id="password" name="password" placeholder="password" type="new-password">
           <input name="submit" type="submit" value="Envoyer ">
           <span>
             <?php

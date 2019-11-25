@@ -72,7 +72,7 @@ if (!isset($_SESSION['id']))
         {
           $res = $result[$nombrephoto]['img'];
 
-          echo "<img src='gallery/$res'>" ;
+          echo "<img src='gallery/$res' class='photo_index'>" ;
 
           $nombrephoto--;
         }
@@ -198,7 +198,7 @@ if (!isset($_SESSION['id']))
               }
 
 
-              echo "<br><br>";
+
               //ok on a afficher l image , le boutton like, avant d afficher lenvoi de commentaire on va afficher la liste des commentaires
 
               try {
@@ -209,23 +209,39 @@ if (!isset($_SESSION['id']))
 
                 $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query= $dbh->prepare("SELECT comment FROM commentaire WHERE galleryid = :gallery");
+                $query= $dbh->prepare("SELECT * FROM commentaire WHERE galleryid = :gallery");
 
 
                 $query->execute([':gallery' => $galleryid]);
 
                 $tableaucommentaire = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
               } catch (PDOException $e) {
                 echo 'error de recuperation des commentaires';
               }
               //je dois recuperer le nombre de commentaire
-              echo "<br>Commentaires :<br>";
+              echo "<br><div class='title'>Commentaires :</div><br>";
               $i = 0;
               while (isset($tableaucommentaire[$i]['comment']))
               {
-                echo "<p>" .htmlspecialchars($tableaucommentaire[$i]['comment']). "<p/>";
+                try {
+                  $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+                  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                  $query= $dbh->prepare("SELECT username FROM users WHERE id = :userid");
+                  $query->execute([':userid' => $tableaucommentaire[$i]['userid']]);
+
+                  $nomdumecquiacommenter = $query->fetchAll();
+
+
+
+
+
+
+                } catch (PDOException $e) {
+
+                }
+
+                echo "<p class='title'>".$nomdumecquiacommenter[0]['username']. " à poster ce commentaire :  <p class='title'>   ".htmlspecialchars($tableaucommentaire[$i]['comment']). "</p></p>";
                 $i++;
               }
 

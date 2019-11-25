@@ -87,6 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
               // cette condition marche que si ya deux dfiltre mais bon pas le time
               $cat = '$cat';
 
+
               if ($_SESSION['filtre'] == $cat)
                   $filtr = "../img/cat.png";
               else
@@ -99,12 +100,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
               mettre_un_filtre("../tmp/".$_FILES["photo"]["name"], $filtr, "../gallery/" . $nomdelimagequivaetreenregistre . ".png");
 
-
+              unlink("../tmp/".$_FILES["photo"]["name"]);
               // mtn que ca c fait on va inserer la nouvelle image dans la base de donnee
 
               mettre_dans_bdd($nomdelimagequivaetreenregistre.".png", $_SESSION["id"]);
 
-              unlink("../tmp/" .$nomdelimagequivaetreenregistre. ".png");
+
             //  echo "machalah tout s est bien passé";
               $_SESSION['succes'] = "Votre image à ete upload et superpose avec succes";
 

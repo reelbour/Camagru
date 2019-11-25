@@ -50,10 +50,10 @@ body{
   position: fixed;
 }
 .title{
-  text-align: center;
-  padding-bottom: 30px;
-  font-size: 22px;
+
+  font-size: 17px;
   font-family: monospace;
+  border-style: outset;
 }
 h2{
   text-align: center;
@@ -82,4 +82,8 @@ h2{
 {
   width: 500px;
   height: 500px;
+}
+
+.border_com{
+  border-style: groove;
 }

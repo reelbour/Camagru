@@ -34,11 +34,11 @@ if (isset($_SESSION['username']))
         <h3>Changer Votre Mot de passe</h3>
         <form action="action/a_modifpassword.php" method="post">
           <label>Ancien mot de passe</label>
-          <input type="password" name="old_password" value="">
+          <input type="current-password" name="old_password" value="">
           <label>Nouveu mot de passe</label>
-          <input type="password" name="new_pass1" value="">
+          <input type="new-password" name="new_pass1" value="">
           <label>Confirmer Votre nouveu mot de passe</label>
-          <input type="password" name="new_pass2" value="">
+          <input type="new-password" name="new_pass2" value="">
           <input type="submit" name="Envoyer" value="Envoyer">
         </form>
       </div>

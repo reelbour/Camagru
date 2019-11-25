@@ -16,14 +16,14 @@
 
 <?php } else { ?>
   <div class="logo">
-  
+
   </div>
 <div class="login">
     <form class="form_index" action="action/a_login.php" method="post">
       <label>Email: </label>
       <input id="mail" type="mail" name="email" value="" placeholder="">
       <label>Mot de passe:</label>
-      <input id="password" type="password" name="password" value="">
+      <input id="password" type="current-password" name="password" value="">
       <input type="submit" name="submit" value="Envoyer">
       <a href="form/signup.php"> <br>Créer un compte</a>
       <a href="form/forgot.php">Mot de passe oublié ?</a>

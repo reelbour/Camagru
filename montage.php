@@ -56,7 +56,7 @@
 
     <fieldset style="width: 640px; display: inline-block;">
       <legend>Photo</legend>
-      <img id="test" src="about:blank" alt="Photo" title="Photo" />
+      <img id="test" src="" alt="Photo" title="Photo" />
       <form class="" action="action/a_save_file.php" method="post">
       <input type="text" name="image" style="display:none">
       <button type="submit" name="submit">Enregistrer la photo</button>
