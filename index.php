@@ -16,7 +16,7 @@ if (!isset($_SESSION['id']))
   </head>
   <body class="container">
     <?php include("fragment/header.php");?>
-    
+
 
        <br>  </p>
 
@@ -161,7 +161,80 @@ if (!isset($_SESSION['id']))
               $_SESSION['succes'] = null;
 
           echo  '</span>';
-            $nombredepage = $nombrephoto / 5;
+
+        //    echo $nombrephoto;
+            $nombredepage = round(($nombrephoto + 1) / 6);
+            $messagesParPage = 6;
+//             if(isset($_GET['page'])) // Si la variable $_GET['page'] existe...
+// {
+//      $pageActuelle=intval($_GET['page']);
+//
+//      if($pageActuelle>$nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
+//      {
+//         echo" on afffiche page actuelle";
+//         echo "<br><br>";
+//         $pageActuelle=$nombreDePages;
+//         echo "<br><br>";
+//         echo $pageActuelle;
+//         echo "<br><br>";
+//      }
+// }
+// else // Sinon
+// {
+//      $pageActuelle=1; // La page actuelle est la n°1
+//      echo "<br><br>";
+//      echo "ON EST DNAS LA PAGE 1";
+//      echo "<br><br>";
+//      echo $pageActuelle;
+// }
+
+
+//$premiereEntree=($pageActuelle-1)*$messagesParPage; // On calcul la première entrée à lire
+
+
+
+//$dbb = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+//$dbb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// $querysosa= $dbh->prepare("SELECT * FROM gallery ORDER BY id LIMIT '$premiereEntree', '$messagesParPage'");
+//
+// $querysosa->execute();
+// $resultx = $querysosa->fetchAll(PDO::FETCH_ASSOC);
+//
+// print_r($resultx);
+
+
+// La requête sql pour récupérer les messages de la page actuelle.
+//$retour_messages=mysql_query('SELECT * FROM livredor ORDER BY id DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
+//$retour_messages =
+// while($donnees_messages=mysql_fetch_assoc($retour_messages)) // On lit les entrées une à une grâce à une boucle
+// {
+//      //Je vais afficher les messages dans des petits tableaux. C'est à vous d'adapter pour votre design...
+//      //De plus j'ajoute aussi un nl2br pour prendre en compte les sauts à la ligne dans le message.
+//      echo '<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+//                 <tr>
+//                      <td><strong>Ecrit par : '.$donnees_messages['pseudo'].'</strong></td>
+//                 </tr>
+//                 <tr>
+//                      <td>'.nl2br($donnees_messages['message']).'</td>
+//                 </tr>
+//             </table><br /><br />';
+//     //J'ai rajouté des sauts à la ligne pour espacer les messages.
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+            echo "<br>";
+            //echo $nombredepage;
+
             //comme ca 5 element par page
             $indexpourlapage = 1;
             while($nombrephoto >= 0)
