@@ -16,7 +16,9 @@ if (!isset($_SESSION['id']))
   </head>
   <body class="container">
     <?php include("fragment/header.php");?>
-    <p> <br> <br> <br>  </p>
+    
+
+       <br>  </p>
 
     <h3>Bienvenue internaute</h3>
     <p>Inscris toi pour pouvoir jouir des tous les features du sites !<br></p>

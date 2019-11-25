@@ -20,7 +20,6 @@ try {
     $query->closeCursor();
     return (0);
   } catch (PDOException $e) {
-    return (-2);
   }
 }
 

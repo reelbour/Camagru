@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'fonction/verify.php';
+
 ?>
 <!DOCTYPE html>
 <HTML>
@@ -23,13 +24,19 @@ include_once 'fonction/verify.php';
 
     <div id="login">
     <div class="title">VERIFIER VOTRE COMPTE</div>
-    <?php if (verify($_GET["token"]) == 0) { ?>
-      <strong class="title">Votre comte à bien été verifié, vous pouvez mtn vous connecter !</strong>
 
-    <?php } else { ?>
-      <strong>Compte non trouvé, avez vous fait une erreur de frappe ?</strong>
-    <?php } ?>
-    </div>
+    <?php
+    if (isset($_GET['token']))
+      {
+        if (verify($_GET["token"])  == 0) { ?>
+          <strong class="title">Votre comte à bien été verifié, vous pouvez mtn vous connecter !</strong>
+
+          <?php } else { ?>
+          e<strong>Compte non trouvé, avez vous fait une erreur de frappe ?</strong>
+        <?php }} else {
+          $_SESSION['error'] = "essaie pas de me ken ! ta pas acces a verify sans le bon token";
+          header("Location: index.php");
+        }?>
 
     <br><br><br>
     <?php include('fragment/footer.php') ?>

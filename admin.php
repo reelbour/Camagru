@@ -105,8 +105,11 @@ if (isset($_SESSION['username']))
     <title></title>
   </head>
   <body>
-    <h3>Vous devez vous connectez pour acceder a cette page, cliquer <a href="index.php">ICI</a> pour revenir a l'acceuil </h3>
-    <h3>Si vous souhaitez vous inscrire cliquer <a href="form/signup.php">ICI</a> pour vous inscire</h3>
+    <!-- <h3>Vous devez vous connectez pour acceder a cette page, cliquer <a href="index.php">ICI</a> pour revenir a l'acceuil </h3>
+    <h3>Si vous souhaitez vous inscrire cliquer <a href="form/signup.php">ICI</a> pour vous inscire</h3> -->
+<?php
+    header("Location: form/signup.php");
+?>
   </body>
 </html>
 <?php } ?>
